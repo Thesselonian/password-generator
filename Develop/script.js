@@ -3,21 +3,24 @@ var passwordLengthValue;
 var upperCaseIncluded;
 var lowerCaseIncluded;
 var numbersIncluded;
-var numbers = [
+var numbersList = [
   "1", "2", "3", "4", "5", "6", "7", "8", "9"
 ]
-var upperCaseLetters = [
+
+var upperCaseLettersList = [
   "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"
 ]
-var lowerCaseLetters = [
+
+var lowerCaseLettersList= [
   "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"
 ]
-var specialCharacters = [
+
+var specialCharactersList = [
   "!", "@", "#", "$", "%", "^", "&", "*", "\(", "\)", "-", "="
 ]
-//var passwordElements = [
-  //upperCaseElement,
-//]
+
+var charactersUsed = [
+]
 
 
 // Get references to the #generate element
@@ -26,25 +29,23 @@ var generateBtn = document.querySelector("#generate");
 // Write password to the #password input
 function writePassword() {
 
-  //functions for determining password criteria. Function length, uppercase/lowercase included, special characters included
+  //functions for determining password criteria. Function length, uppercase/lowercase included, special characters included, if they are included push to the
+  //characters used array. 
   passwordLength();
 
   upperCase();
 
-  lowerCase()
+  lowerCase();
+
+  numbers();
+
+  specialCharacters();
 
 };
 
 
 
 //switch to determine action based on response to prompt
-
-
-//prompt for lowercase
-//var lowerCase = prompt("Would you like your password to include lowercase letters? Enter 'Y' for yes or 'N' for no.");
-
-//prompt for numbers
-//var numbers = prompt("Would you like your password to include numbers letters? Enter 'Y' for yes or 'N' for no.");
 
   //var password = generatePassword();
   //var passwordText = document.querySelector("#password");
@@ -71,6 +72,7 @@ var upperCase = function() {
   upperCaseIncluded = upperCaseIncluded.toLowerCase();
   if (upperCaseIncluded === "y") {
     window.alert ("Password will include uppercase letters");
+    charactersUsed.push(upperCaseLettersList);
   }
   else if (upperCaseIncluded === "n") {
     window.alert ("Password will not include uppercase letters");
@@ -87,6 +89,7 @@ var lowerCase = function() {
   lowerCaseIncluded = lowerCaseIncluded.toLowerCase();
   if (lowerCaseIncluded === "y") {
     window.alert ("Password will include lowercase letters");
+    charactersUsed.push(lowerCaseLettersList);
   }
   else if (lowerCaseIncluded === "n") {
     window.alert ("Password will not include lowercase letters");
@@ -103,8 +106,25 @@ var numbers = function() {
   numbersIncluded = numbersIncluded.toLowerCase();
   if (numbersIncluded === "y") {
     window.alert ("Password will include numbers");
+    charactersUsed.push(numbersList);
   }
   else if (numbersIncluded === "n") {
+    window.alert ("Password will not include numbers");
+  }
+  else {
+    window.alert("Please provide a valid response");
+    numbers()
+  }
+};
+
+var specialCharacters = function() {
+  specialCharactersIncluded = window.prompt("Would you like your password to include special characters? Enter 'Y' for yes or 'N' for no.");
+  specialCharactersIncluded = specialCharactersIncluded.toLowerCase();
+  if (specialCharactersIncluded === "y") {
+    window.alert ("Password will include special characters");
+    charactersUsed.push(specialCharactersList);
+  }
+  else if (specialCharactersIncluded === "n") {
     window.alert ("Password will not include numbers");
   }
   else {
