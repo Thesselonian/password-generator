@@ -22,6 +22,9 @@ var specialCharactersList = [
 var charactersUsed = [
 ]
 
+var password = [
+]
+
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
@@ -41,11 +44,13 @@ function writePassword() {
 
   specialCharacters();
 
+  passwordGenerator();
+
+  console.log(password)
+
+  //passwordGenerator();
+
 };
-
-
-
-//switch to determine action based on response to prompt
 
   //var password = generatePassword();
   //var passwordText = document.querySelector("#password");
@@ -72,7 +77,7 @@ var upperCase = function() {
   upperCaseIncluded = upperCaseIncluded.toLowerCase();
   if (upperCaseIncluded === "y") {
     window.alert ("Password will include uppercase letters");
-    charactersUsed.push(upperCaseLettersList);
+    charactersUsed = charactersUsed.concat(upperCaseLettersList);
   }
   else if (upperCaseIncluded === "n") {
     window.alert ("Password will not include uppercase letters");
@@ -89,7 +94,7 @@ var lowerCase = function() {
   lowerCaseIncluded = lowerCaseIncluded.toLowerCase();
   if (lowerCaseIncluded === "y") {
     window.alert ("Password will include lowercase letters");
-    charactersUsed.push(lowerCaseLettersList);
+    charactersUsed = charactersUsed.concat(lowerCaseLettersList);
   }
   else if (lowerCaseIncluded === "n") {
     window.alert ("Password will not include lowercase letters");
@@ -106,7 +111,7 @@ var numbers = function() {
   numbersIncluded = numbersIncluded.toLowerCase();
   if (numbersIncluded === "y") {
     window.alert ("Password will include numbers");
-    charactersUsed.push(numbersList);
+    charactersUsed = charactersUsed.concat(numbersList);
   }
   else if (numbersIncluded === "n") {
     window.alert ("Password will not include numbers");
@@ -122,7 +127,7 @@ var specialCharacters = function() {
   specialCharactersIncluded = specialCharactersIncluded.toLowerCase();
   if (specialCharactersIncluded === "y") {
     window.alert ("Password will include special characters");
-    charactersUsed.push(specialCharactersList);
+    charactersUsed = charactersUsed.concat(specialCharactersList);
   }
   else if (specialCharactersIncluded === "n") {
     window.alert ("Password will not include numbers");
@@ -130,6 +135,15 @@ var specialCharacters = function() {
   else {
     window.alert("Please provide a valid response");
     specialCharactersIncluded()
+  }
+};
+
+var passwordGenerator = function() {
+  for (i=0; i<passwordLengthValue; i++) {
+    var ArrayRandom = Math.floor(Math.random() * (charactersUsed.length));
+    password = password.concat(charactersUsed[ArrayRandom]);
+    password = password.toString();
+    console.log(password);
   }
 };
 
