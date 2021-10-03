@@ -1,8 +1,16 @@
-// Assignment code here
+//variable assignment for password textbox where the password is to appear
+var passwordText = document.querySelector("#password");
+
+// Get references to the #generate element
+var generateBtn = document.querySelector("#generate");
+
+//variables for prompt responses
 var passwordLengthValue;
 var upperCaseIncluded;
 var lowerCaseIncluded;
 var numbersIncluded;
+
+//variables for arrays containing character lists
 var numbersList = [
   "1", "2", "3", "4", "5", "6", "7", "8", "9"
 ]
@@ -19,18 +27,20 @@ var specialCharactersList = [
   "!", "@", "#", "$", "%", "^", "&", "*", "\(", "\)", "-", "="
 ]
 
+//array that the used character lists will be concatenated to
 var charactersUsed = [
 ]
 
+//array that the password is written to
 var password = [
 ]
 
-
-// Get references to the #generate element
-var generateBtn = document.querySelector("#generate");
-
 // Write password to the #password input
 function writePassword() {
+
+  //reset password array and charactersUsed array in case it was already used
+  password = [];
+  charactersUsed = [];
 
   //functions for determining password criteria. Function length, uppercase/lowercase included, special characters included, if they are included push to the
   //characters used array. 
@@ -46,18 +56,11 @@ function writePassword() {
 
   passwordGenerator();
 
-  console.log(password)
-
-  //passwordGenerator();
+  passwordText.innerText = password
 
 };
 
-  //var password = generatePassword();
-  //var passwordText = document.querySelector("#password");
-
-  //passwordText.value = password;
-
-//function for password length
+//function that asks the user for the desired password length
 var passwordLength = function() {
   passwordLengthValue = window.prompt("How long should the password be? value must be between 8 and 128 characters");
   passwordLengthValue = parseInt(passwordLengthValue);
@@ -71,7 +74,7 @@ var passwordLength = function() {
   }
 };
 
-//prompt for uppercase
+//function that prompts user if they want upper case characters in the password
 var upperCase = function() {
   upperCaseIncluded = window.prompt("Would you like your password to include uppercase letters? Enter 'Y' for yes or 'N' for no.");
   upperCaseIncluded = upperCaseIncluded.toLowerCase();
@@ -88,7 +91,7 @@ var upperCase = function() {
   };
 };
 
-//prompt for lowercase
+//function that prompts user if they want lower case characters in the password
 var lowerCase = function() {
   lowerCaseIncluded = window.prompt("Would you like your password to include lowercase letters? Enter 'Y' for yes or 'N' for no.");
   lowerCaseIncluded = lowerCaseIncluded.toLowerCase();
@@ -105,7 +108,7 @@ var lowerCase = function() {
   }
 };
 
-//prompt for numbers
+//function that prompts user if they want numbers in the password
 var numbers = function() {
   numbersIncluded = window.prompt("Would you like your password to include numbers? Enter 'Y' for yes or 'N' for no.");
   numbersIncluded = numbersIncluded.toLowerCase();
@@ -122,6 +125,7 @@ var numbers = function() {
   }
 };
 
+//function that prompts user if they want special characters in the password
 var specialCharacters = function() {
   specialCharactersIncluded = window.prompt("Would you like your password to include special characters? Enter 'Y' for yes or 'N' for no.");
   specialCharactersIncluded = specialCharactersIncluded.toLowerCase();
@@ -143,7 +147,6 @@ var passwordGenerator = function() {
     var ArrayRandom = Math.floor(Math.random() * (charactersUsed.length));
     password = password.concat(charactersUsed[ArrayRandom]);
     password = password.toString();
-    console.log(password);
   }
 };
 
