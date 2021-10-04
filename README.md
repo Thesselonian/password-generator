@@ -5,6 +5,6 @@ This application is designed to generate a password between 8-128 characters. Up
 
 Screenshots of the application
 
-![password generator](./assets/images/password-generator.jpg?"Password Generator")
-![password generated](./assets/images/password-generated.jpg?"A Password Generated")
+![password generator](./assets/images/password-generator.jpg?raw=true"Password Generator")
+![password generated](./assets/images/password-generated.jpg?raw=true"A Password Generated")
 
